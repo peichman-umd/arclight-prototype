@@ -11,7 +11,6 @@ USER arclight
 
 WORKDIR /home/arclight
 
-#COPY --chown=arclight:arclight Gemfile Gemfile.lock ./
 COPY --chown=arclight:arclight . .
 RUN bundle install
 
