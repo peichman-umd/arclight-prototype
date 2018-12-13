@@ -1,5 +1,9 @@
 # ArcLight Prototype Application
 
+This repository contains a minimal [ArcLight](https://github.com/sul-dlss/arclight)
+Rails application. It was created using the Arclight generator, as described in
+[Getting started: creating a new ArcLight app](https://github.com/sul-dlss/arclight/wiki/Creating,-installing,-and-running-your-ArcLight-application).
+
 ## Running in Vagrant
 
 Clone the repo and start up the Vagrant box:
