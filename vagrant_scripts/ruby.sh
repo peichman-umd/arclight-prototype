@@ -25,3 +25,4 @@ gem install bundler
 cd "$APP_DIR"
 bundle install
 rbenv rehash
+rails db:migrate

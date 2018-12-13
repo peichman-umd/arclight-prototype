@@ -13,5 +13,6 @@ WORKDIR /home/arclight
 
 COPY --chown=arclight:arclight . .
 RUN bundle install
+RUN rails db:migrate
 
 CMD solr_wrapper & rails s
