@@ -19,7 +19,7 @@ Start Solr:
 ```
 vagrant ssh
 cd /vagrant
-solr_wrapper
+solr_wrapper --version 7.3.0
 ```
 
 In a separate terminal, start the ArcLight Rails app:
