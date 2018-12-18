@@ -31,6 +31,5 @@
 
 en:
   hello: "Hello world"
-  
-arclight:
-  masthead_heading: "University of Maryland Archival Collections"
+  arclight:
+    masthead_heading: "University of Maryland Archival Collections"
