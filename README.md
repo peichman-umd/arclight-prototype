@@ -69,4 +69,41 @@ default URLs are:
 * Solr: <http://localhost:8983>
 * ArcLight App: <http://localhost:3000>
 
+## Loading Sample Data
 
+### Docker
+
+1) On the host, access the terminal in the Docker container:
+
+```
+docker exec -it arclight /bin/bash
+```
+
+2) Create an "eads" directory:
+
+```
+mkdir eads
+```
+
+3) In a separate terminal, copy EAD files into a running Docker container, use:
+
+```
+docker cp <EAD FILE> arclight:~/eads
+```
+
+This will copy the file from the host to the ~/eads.
+
+4) In the Docker container terminal, add the file:
+
+```
+FILE=./eads/<EAD_FILE_NAME> REPOSITORY_ID=umd bundle exec rake arclight:index
+```
+
+where <EAD_FILE_NAME> is the name of the file.
+
+For example, if the EAD filename is "0037.LIT_20181213_170001_UTC__ead.xml" the
+command would be:
+
+```
+FILE=./eads/0037.LIT_20181213_170001_UTC__ead.xml REPOSITORY_ID=umd bundle exec rake arclight:index
+```
