@@ -6,6 +6,13 @@ Rails application. It was created using the Arclight generator, as described in
 
 ## Running in Vagrant
 
+**Note:** We've had issues with running the Vagrant on Mac OS X.
+The VirtualBox version appears to be critical. The following versions are
+believed to work:
+
+* Mac OS X (Mojave): VirtualBox v5.2.22
+* Mac OS X (High Sierra): VirtualBox 5.1.30
+
 Clone the repo and start up the Vagrant box:
 
 ```
@@ -71,6 +78,47 @@ default URLs are:
 
 ## Loading Sample Data
 
+The following are derived from the <https://github.com/sul-dlss/arclight/wiki/Indexing-EAD-in-ArcLight>
+
+### Vagrant
+
+1) In the "arclight-prototype" directory on the host machine, create an "eads"
+   directory:
+
+```
+mkdir eads
+```
+
+2) Copy any EAD files into the "eads" directory.
+
+3) SSH into the Vagrant machine:
+
+```
+vagrant ssh
+```
+
+4) Switch the the "/vagrant" directory:
+
+```
+cd /vagrant
+```
+
+5) Run the following command to load the file:
+
+```
+FILE=./eads/<EAD_FILE_NAME> REPOSITORY_ID=<REPO_ID> bundle exec rake arclight:index
+```
+
+where <EAD_FILE_NAME> is the name of the file, and <REPO_ID> is the name of
+the repositort from the "config/repositories.yml" file:
+
+For example, to load the EAD file "0037.LIT_20181213_170001_UTC__ead.xml" into
+the "umd" repository, command would be:
+
+```
+FILE=./eads/0037.LIT_20181213_170001_UTC__ead.xml REPOSITORY_ID=umd bundle exec rake arclight:index
+```
+
 ### Docker
 
 1) On the host, access the terminal in the Docker container:
@@ -93,16 +141,17 @@ docker cp <EAD FILE> arclight:~/eads
 
 This will copy the file from the host to the ~/eads.
 
-4) In the Docker container terminal, add the file:
+4) In the Docker container terminal, run the following command to load the file:
 
 ```
-FILE=./eads/<EAD_FILE_NAME> REPOSITORY_ID=umd bundle exec rake arclight:index
+FILE=./eads/<EAD_FILE_NAME> REPOSITORY_ID=<REPO_ID> bundle exec rake arclight:index
 ```
 
-where <EAD_FILE_NAME> is the name of the file.
+where <EAD_FILE_NAME> is the name of the file, and <REPO_ID> is the name of
+the repository from the "config/repositories.yml" file:
 
-For example, if the EAD filename is "0037.LIT_20181213_170001_UTC__ead.xml" the
-command would be:
+For example, to load the EAD file "0037.LIT_20181213_170001_UTC__ead.xml" into
+the "umd" repository, command would be:
 
 ```
 FILE=./eads/0037.LIT_20181213_170001_UTC__ead.xml REPOSITORY_ID=umd bundle exec rake arclight:index
