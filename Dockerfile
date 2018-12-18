@@ -15,4 +15,4 @@ COPY --chown=arclight:arclight . .
 RUN bundle install
 RUN rails db:migrate
 
-CMD solr_wrapper & rails s
+CMD solr_wrapper --version 7.3.0 & rails s
